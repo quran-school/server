@@ -1,0 +1,63 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+apply plugin: 'idea'
+
+group = 'com.letarda'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+
+dependencies {
+//	compile('org.springframework.boot:spring-boot-starter-data-ldap')
+//	compile('org.springframework.boot:spring-boot-starter-integration')
+//	compile('org.springframework.boot:spring-boot-starter-jdbc')
+//	compile('org.springframework.boot:spring-boot-starter-mail')
+	compile('org.springframework.boot:spring-boot-starter-web')
+//	compile('org.springframework.boot:spring-boot-starter-websocket')
+	compile('org.springframework.boot:spring-boot-starter-security')
+
+	compile group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.0.1.RELEASE'
+
+//	compile group: 'org.springframework.social', name: 'spring-social-security', version: '1.1.6.RELEASE'
+//	compile group: 'org.springframework.social', name: 'spring-social-core', version: '1.1.6.RELEASE'
+//	compile group: 'org.springframework.social', name: 'spring-social-facebook', version: '2.0.3.RELEASE'
+//	compile group: 'org.springframework.social', name: 'spring-social-google', version: '1.0.0.RELEASE'
+//	compile group: 'org.springframework.social', name: 'spring-social-linkedin', version: '1.0.2.RELEASE'
+
+	runtime('org.webjars:jquery:2.1.1')
+	runtime('org.webjars:bootstrap:3.2.0')
+	runtime('org.webjars:js-cookie:2.1.0')
+	runtime('org.webjars:webjars-locator-core')
+
+//	runtime('mysql:mysql-connector-java')
+//	runtime('org.apache.derby:derby')
+//	runtime('org.postgresql:postgresql')
+//
+//	compileOnly('org.projectlombok:lombok')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
